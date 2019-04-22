@@ -1,4 +1,21 @@
 {
-  "presets": ["es2015", "stage-0", "react"],
-  "plugins": ["add-module-exports", "transform-decorators-legacy", "transform-runtime"]
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"useBuiltIns": "entry",
+				"targets": {
+					"esmodules": true
+				}
+			}
+		],
+		"@babel/preset-react"
+	],
+	"plugins": [
+		"@babel/transform-runtime",
+		"@babel/plugin-syntax-dynamic-import",
+		"@babel/plugin-proposal-class-properties",
+		"@babel/plugin-proposal-export-namespace-from",
+		"@babel/plugin-proposal-throw-expressions"
+	]
 }

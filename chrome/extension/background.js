@@ -1,8 +1,10 @@
-import { isContentScriptLoaded, loadContentScript } from './background/contentScriptLoader';
+import {
+  isContentScriptLoaded,
+  loadContentScript
+} from './background/contentScriptLoader';
 
 require('./background/contextMenus');
 require('./background/badge');
-
 
 const targetURL = '^https://github\\.com';
 

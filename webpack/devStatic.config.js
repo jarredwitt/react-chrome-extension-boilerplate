@@ -10,5 +10,5 @@ module.exports = {
     // the best way to develop these two scripts is "webpack --watch" & full page reload.
     content: [path.join(__dirname, '../chrome/extension/content')],
     page: [path.join(__dirname, '../chrome/extension/page')]
-  },
+  }
 };

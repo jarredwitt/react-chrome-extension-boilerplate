@@ -26,7 +26,7 @@ module.exports = {
         NODE_ENV: JSON.stringify('dev')
       }
     }),
-    new webpack.IgnorePlugin(/[^/]+\/[\S]+.prod$/),
+    new webpack.IgnorePlugin(/[^/]+\/[\S]+.prod$/)
   ],
 
   module: {
@@ -35,7 +35,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader'
         }
       },
       {
@@ -44,11 +44,18 @@ module.exports = {
           'style-loader',
           // Note: don't use sourceMap for content/page's CSS. it will cause CSP error.
           // if you want sourceMap apply to popup or window, have separated js file instead of using devCommon
-          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+              importLoaders: 1
+            }
+          },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [autoprefixer]
+              plugins: [autoprefixer]
             }
           }
         ]
@@ -57,7 +64,12 @@ module.exports = {
         test: /\.scss$/,
         use: [
           'style-loader',
-          'css-loader?importLoaders=1',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
           'sass-loader'
         ]
       },
@@ -66,10 +78,10 @@ module.exports = {
         use: [
           {
             // import 'imageFile' will be inlined into script with base64encoded.
-            loader: 'url-loader',
-          },
+            loader: 'url-loader'
+          }
         ]
-      },
+      }
     ]
-  },
+  }
 };

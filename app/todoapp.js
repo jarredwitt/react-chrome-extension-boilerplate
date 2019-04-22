@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // i18n
-import {
-  addLocaleData,
-  IntlProvider,
-} from 'react-intl';
-
+import { addLocaleData, IntlProvider } from 'react-intl';
 
 import en from 'react-intl/locale-data/en';
 import ko from 'react-intl/locale-data/ko';
@@ -21,13 +17,10 @@ chrome.storage.local.get('state', (obj) => {
   const { state } = obj;
   const initialState = JSON.parse(state || '{}');
 
-  const createStore = require('./store/configureStore');
+  const createStore = require('./store/configureStore').default;
 
   ReactDOM.render(
-    <IntlProvider
-      locale={language}
-      messages={messages}
-    >
+    <IntlProvider locale={language} messages={messages}>
       <Root store={createStore(initialState)} />
     </IntlProvider>,
     document.querySelector('#root')

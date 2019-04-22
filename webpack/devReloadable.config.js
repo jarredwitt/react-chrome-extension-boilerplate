@@ -14,6 +14,6 @@ module.exports = {
     // array of script file added per entry will be merged to each entry point.
     window: [path.join(__dirname, '../chrome/extension/window')],
     popup: [path.join(__dirname, '../chrome/extension/popup')],
-    background: [path.join(__dirname, '../chrome/extension/background')],
-  },
+    background: [path.join(__dirname, '../chrome/extension/background')]
+  }
 };
